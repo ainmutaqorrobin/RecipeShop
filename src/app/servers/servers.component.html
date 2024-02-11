@@ -4,14 +4,11 @@
             <label>Enter username</label>
             <input type="text" class="form-control" [(ngModel)]="userName">
             <p>Your current username is {{userName}}</p>
-            <button 
-            class="btn btn-primary" 
-            (click)="userName=''" 
-            [disabled]="userName===''">Reset username
-            </button>
+            <button class="btn btn-primary" (click)="onUpdateServer($event)" [disabled]="userName===''">Create new Server</button>
+            <br>
         </div>
         <div class="col-xs-12">
-            <button class="btn btn-primary" (click)="onCreateServer()">Create Server</button>
+            <button class="btn btn-primary" (click)="onCreateServer()">Show Server</button>
             <p *ngIf="serverStatus">Server created name {{serverName}}</p>
         </div>
     </div>
