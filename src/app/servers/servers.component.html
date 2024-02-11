@@ -10,6 +10,10 @@
             [disabled]="userName===''">Reset username
             </button>
         </div>
+        <div class="col-xs-12">
+            <button class="btn btn-primary" (click)="onCreateServer()">Create Server</button>
+            <p *ngIf="serverStatus">Server created name {{serverName}}</p>
+        </div>
     </div>
 </div>
 
