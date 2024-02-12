@@ -18,14 +18,13 @@ export class ServersComponent implements OnInit {
     }, 2000);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.serverName = ``;
+  }
 
   onCreateServer() {
     this.serverStatus = true;
     this.serverCreationStatus = `Server was created `;
-    console.log(`ServerName variable is ` + this.serverName);
   }
-  onUpdateServer(event: Event) {
-    this.serverName = (<HTMLInputElement>event.target).value;
-  }
+  onUpdateServer() {}
 }
