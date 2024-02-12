@@ -6,8 +6,10 @@
         </div>
         <div class="col-xs-12">
             <button class="btn btn-primary" (click)="onCreateServer()">Show Server</button>
-            <p *ngIf="serverStatus">Server created name {{serverName}}</p>
-            <p *ngIf="!serverStatus">No server yet</p>
+            <p *ngIf="serverStatus; else Noserver">Server created name {{serverName}}</p>
+            <ng-template #Noserver>
+                <p>No server yet</p>
+            </ng-template>
         </div>
     </div>
 </div>
