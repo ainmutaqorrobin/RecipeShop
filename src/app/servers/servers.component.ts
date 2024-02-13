@@ -5,26 +5,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./servers.component.css'],
 })
 export class ServersComponent implements OnInit {
+  serverStatus: boolean = false;
+  resetStatus: boolean = false;
   allowNewServer: boolean = false;
-  serverCreationStatus = `No status created yet`;
-  serverStatus = false;
-  serverName: string;
-  userName = ``;
-  resetStatus = false;
+  serverCreationStatus: string = `No status created yet`;
+  serverName: string = `TestServer3`;
+  userName: string = ``;
+  servers: Array<string> = [`TestServer1`, `TestServer2`];
+
+  detailStatus: boolean = false;
+  detailLog: Array<Date> = [];
 
   constructor() {
-    setTimeout(() => {
-      this.allowNewServer = true;
-    }, 2000);
+    this.serverStatus = Math.random() > 0.5 ? true : false;
   }
 
-  ngOnInit() {
-    this.serverName = ``;
-  }
+  ngOnInit() {}
 
   onCreateServer() {
-    this.serverStatus = true;
-    this.serverCreationStatus = `Server was created `;
+    this.servers.push(this.serverName);
   }
-  onUpdateServer() {}
+  callStyle() {
+    return this.serverStatus ? `green` : `red`;
+  }
+  displayDetail() {
+    this.detailLog.push(new Date());
+    this.detailStatus = !this.detailStatus;
+  }
 }
