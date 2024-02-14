@@ -1,2 +1,28 @@
-<button class="btn btn-primary" [disabled]="!allowNewServer">Add Server</button>
-<p>This component is in servers HTML</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <label>Server directive</label>
+            <!-- <input type="text" class="form-control" [(ngModel)]="serverName"> -->
+        </div>
+        <div class="col-xs-12">
+            <button class="btn btn-primary" (click)="onCreateServer()">Add Server</button>
+            <p *ngIf="serverStatus; else Noserver" [ngStyle]="{backgroundColor:callStyle()}">Server is now online and created by name {{serverName}}</p>
+            <ng-template #Noserver>
+                <p [ngStyle]="{backgroundColor:callStyle()}">The Server is now Offline</p>
+            </ng-template>
+            <app-server></app-server>
+            @for (server of servers; track server) {
+                <p [ngStyle]="{backgroundColor:callStyle()}">{{server}}</p>
+            }
+        </div>
+        <div class="col-xs-12">
+            <label >Assignment 3</label><br>
+            <button class="btn btn-primary" (click)="displayDetail()">Display Details</button>
+            <p *ngIf="detailStatus">Secret Password = tuna</p>
+            <p 
+            *ngFor="let log of detailLog; let i = index" 
+            [ngStyle]="{backgroundColor:i>=4?'blue':'transparent'}">{{log}}</p>
+        </div>
+    </div>
+</div>
+
