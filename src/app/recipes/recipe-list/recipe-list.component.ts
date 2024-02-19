@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -16,6 +16,16 @@ export class RecipeListComponent implements OnInit {
     new Recipe(
       `Recipe 2`,
       `recipe 2 descrition will append here`,
+      `https://upload.wikimedia.org/wikipedia/commons/0/0b/Recipe_Unlimited_logo.png`
+    ),
+    new Recipe(
+      `Recipe 3`,
+      `recipe 3 descrition will append here`,
+      `https://upload.wikimedia.org/wikipedia/commons/0/0b/Recipe_Unlimited_logo.png`
+    ),
+    new Recipe(
+      `Recipe 4`,
+      `recipe 4 descrition will append here`,
       `https://upload.wikimedia.org/wikipedia/commons/0/0b/Recipe_Unlimited_logo.png`
     ),
   ];
