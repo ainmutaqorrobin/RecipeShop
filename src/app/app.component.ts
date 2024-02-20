@@ -11,5 +11,6 @@ export class AppComponent {
 
   onNavigate(optionChoosed: string) {
     this.loadedFeature = optionChoosed;
+    console.log(optionChoosed);
   }
 }
