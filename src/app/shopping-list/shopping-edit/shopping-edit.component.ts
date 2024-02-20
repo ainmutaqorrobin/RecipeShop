@@ -1,5 +1,11 @@
-import { Component } from '@angular/core';
-import { Recipe } from '../../recipes/recipe.model';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { Ingredients } from '../../shared/ingredient.model';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -7,21 +13,14 @@ import { Recipe } from '../../recipes/recipe.model';
   styleUrl: './shopping-edit.component.css',
 })
 export class ShoppingEditComponent {
-  nameInput: string;
-  amountInput: string;
+  @ViewChild(`nameInput`, { static: false }) __nameInput: ElementRef;
+  @ViewChild(`amountInput`, { static: false }) __amountInput: ElementRef;
+  @Output(`passIngredient`) ingredientAdded = new EventEmitter<Ingredients>();
 
-  addNewItem(
-    localNameInput: HTMLInputElement,
-    localAmountInput: HTMLInputElement
-  ) {
-    this.nameInput = localNameInput.value;
-    this.amountInput = localAmountInput.value;
-
-    console.log(
-      `this.nameInput is ` +
-        this.nameInput +
-        ` and this.amountInput is ` +
-        this.amountInput
-    );
+  addNewItem() {
+    const ingName = this.__nameInput.nativeElement.value;
+    const ingAmount = this.__amountInput.nativeElement.value;
+    const newIngredient = new Ingredients(ingName, ingAmount);
+    this.ingredientAdded.emit(newIngredient);
   }
 }
