@@ -4,20 +4,13 @@ import { HeaderComponent } from './header/header.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  // styleUrls: ['./app.component.css']
-  styles: [
-    `
-      h3 {
-        color: dodgerblue;
-      }
-    `,
-  ],
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  showsecret: boolean = false;
-  log: Array<number> = [];
+  loadedFeature = `recipes`;
 
-  onToggleDetails() {
-    this.showsecret=!this.showsecret;
+  onNavigate(optionChoosed: string) {
+    this.loadedFeature = optionChoosed;
+    console.log(optionChoosed);
   }
 }
