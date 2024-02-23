@@ -1,4 +1,4 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, SimpleChange } from '@angular/core';
 import { Ingredients } from '../shared/ingredient.model';
 
 export class ShoppingListService {
@@ -15,5 +15,8 @@ export class ShoppingListService {
   addIngredients(object: Ingredients) {
     this.ingredients.push(object);
     this.ingredientsChanged.emit(this.ingredients.slice());
+  }
+
+  deleteIngredients(id:PointerEvent) {
   }
 }

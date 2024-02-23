@@ -1,5 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
+import { Ingredients } from '../shared/ingredient.model';
 
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
@@ -7,22 +8,42 @@ export class RecipeService {
     new Recipe(
       `Recipe 1`,
       `recipe 1 descrition will append here`,
-      `https://upload.wikimedia.org/wikipedia/commons/0/0b/Recipe_Unlimited_logo.png`
+      `https://upload.wikimedia.org/wikipedia/commons/0/0b/Recipe_Unlimited_logo.png`,
+      [
+        new Ingredients(`Tomato`, 5),
+        new Ingredients(`Strawberry`, 10),
+        new Ingredients(`Vegetable`, 20),
+      ]
     ),
     new Recipe(
       `Recipe 2`,
       `recipe 2 descrition will append here`,
-      `https://upload.wikimedia.org/wikipedia/commons/0/0b/Recipe_Unlimited_logo.png`
+      `https://upload.wikimedia.org/wikipedia/commons/0/0b/Recipe_Unlimited_logo.png`,
+      [
+        new Ingredients(`Daun Saderi`, 5),
+        new Ingredients(`Tembikai`, 10),
+        new Ingredients(`Susu Kambing`, 20),
+      ]
     ),
     new Recipe(
       `Recipe 3`,
       `recipe 3 descrition will append here`,
-      `https://upload.wikimedia.org/wikipedia/commons/0/0b/Recipe_Unlimited_logo.png`
+      `https://upload.wikimedia.org/wikipedia/commons/0/0b/Recipe_Unlimited_logo.png`,
+      [
+        new Ingredients(`Belacan`, 5),
+        new Ingredients(`Bawang`, 10),
+        new Ingredients(`Sambal ikan bilis`, 20),
+      ]
     ),
     new Recipe(
       `Recipe 4`,
       `recipe 4 descrition will append here`,
-      `https://upload.wikimedia.org/wikipedia/commons/0/0b/Recipe_Unlimited_logo.png`
+      `https://upload.wikimedia.org/wikipedia/commons/0/0b/Recipe_Unlimited_logo.png`,
+      [
+        new Ingredients(`Kicap`, 5),
+        new Ingredients(`Sos Cili`, 10),
+        new Ingredients(`Halia`, 20),
+      ]
     ),
   ];
 

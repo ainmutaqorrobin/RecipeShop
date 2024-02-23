@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, SimpleChange, ViewChild } from '@angular/core';
 import { Ingredients } from '../../shared/ingredient.model';
 import { ShoppingListService } from '../../services/shopping-list.service';
 
@@ -18,5 +18,9 @@ export class ShoppingEditComponent {
     const ingAmount = this.__amountInput.nativeElement.value;
     const newIngredient = new Ingredients(ingName, ingAmount);
     this.SLService.addIngredients(newIngredient);
+  }
+
+  deleteItem() {
+    
   }
 }
