@@ -17,6 +17,5 @@ export class ShoppingListService {
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
 
-  deleteIngredients(id:PointerEvent) {
-  }
+  deleteIngredients(id: PointerEvent) {}
 }
