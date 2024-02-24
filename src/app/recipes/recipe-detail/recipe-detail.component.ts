@@ -7,7 +7,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { Recipe } from '../recipe.model';
-import { ShoppingListService } from '../../services/shopping-list.service';
+import { RecipeService } from '../../services/recipe.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -17,14 +17,12 @@ import { ShoppingListService } from '../../services/shopping-list.service';
 export class RecipeDetailComponent implements OnInit, OnChanges {
   @Input() recipe: Recipe;
 
-  constructor(private SLService: ShoppingListService) {}
+  constructor(private recipeService: RecipeService) {}
 
   ngOnInit(): void {}
   ngOnChanges(changes: SimpleChanges): void {}
 
-  addShoppingListCart(object: Recipe) {
-    for (let i of object.ingredients) {
-      this.SLService.addIngredients(i);
-    }
+  addToShoppingListCart() {
+    this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
   }
 }

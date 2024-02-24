@@ -12,10 +12,13 @@ export class ShoppingListService {
     return this.ingredients.slice();
   }
 
-  addIngredients(object: Ingredients) {
+  addIngredient(object: Ingredients) {
     this.ingredients.push(object);
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
 
-  deleteIngredients(id: PointerEvent) {}
+  addIngredients(listIngredient: Ingredients[]) {
+    this.ingredients.push(...listIngredient);
+    this.ingredientsChanged.emit(this.ingredients.slice());
+  }
 }

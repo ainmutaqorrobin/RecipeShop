@@ -17,7 +17,7 @@ export class ShoppingEditComponent {
     const ingName = this.__nameInput.nativeElement.value;
     const ingAmount = this.__amountInput.nativeElement.value;
     const newIngredient = new Ingredients(ingName, ingAmount);
-    this.SLService.addIngredients(newIngredient);
+    this.SLService.addIngredient(newIngredient);
   }
 
   deleteItem() {
