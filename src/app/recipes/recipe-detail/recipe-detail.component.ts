@@ -8,7 +8,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   templateUrl: './recipe-detail.component.html',
   styleUrl: './recipe-detail.component.css',
 })
-export class RecipeDetailComponent implements OnInit, OnChanges {
+export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
   id: number;
 
@@ -24,7 +24,6 @@ export class RecipeDetailComponent implements OnInit, OnChanges {
       this.recipe = this.recipeService.getRecipesFromID(this.id);
     });
   }
-  ngOnChanges(changes: SimpleChanges): void {}
 
   addToShoppingListCart() {
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
@@ -36,5 +35,6 @@ export class RecipeDetailComponent implements OnInit, OnChanges {
 
   onDeleteRecipe() {
     this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
   }
 }

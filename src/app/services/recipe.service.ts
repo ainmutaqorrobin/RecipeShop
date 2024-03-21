@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
 import { Ingredients } from '../shared/ingredient.model';
 import { ShoppingListService } from './shopping-list.service';
-import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 @Injectable()
 export class RecipeService {
@@ -51,10 +50,7 @@ export class RecipeService {
     ),
   ];
 
-  constructor(
-    private SLService: ShoppingListService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private SLService: ShoppingListService) {}
 
   getRecipes() {
     //using slice rather than direct reference because we passing a new copy instead of original array
@@ -74,7 +70,7 @@ export class RecipeService {
     this.recipeChanged.next(this.recipes.slice());
   }
 
-  updateRecipe(newrecipe: Recipe, index: number) {
+  updateRecipe(index: number,newrecipe: Recipe) {
     this.recipes[index] = newrecipe;
     this.recipeChanged.next(this.recipes.slice());
   }
