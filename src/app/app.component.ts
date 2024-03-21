@@ -6,10 +6,4 @@ import { HeaderComponent } from './header/header.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  loadedFeature = `recipes`;
-
-  onNavigate(optionChoosed: string) {
-    this.loadedFeature = optionChoosed;
-  }
-}
+export class AppComponent {}

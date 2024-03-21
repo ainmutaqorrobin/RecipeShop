@@ -1,11 +1,12 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
 import { Ingredients } from '../shared/ingredient.model';
 import { ShoppingListService } from './shopping-list.service';
-import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 @Injectable()
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>();
+  recipeChanged = new Subject<Recipe[]>();
+
   private recipes: Recipe[] = [
     new Recipe(
       `Recipe 1`,
@@ -49,10 +50,7 @@ export class RecipeService {
     ),
   ];
 
-  constructor(
-    private SLService: ShoppingListService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private SLService: ShoppingListService) {}
 
   getRecipes() {
     //using slice rather than direct reference because we passing a new copy instead of original array
@@ -65,5 +63,20 @@ export class RecipeService {
 
   addIngredientsToShoppingList(ingredients: Ingredients[]) {
     this.SLService.addIngredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number,newrecipe: Recipe) {
+    this.recipes[index] = newrecipe;
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
+    this.recipeChanged.next(this.recipes.slice());
   }
 }
