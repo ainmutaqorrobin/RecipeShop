@@ -52,6 +52,11 @@ export class RecipeService {
 
   constructor(private SLService: ShoppingListService) {}
 
+  overrideRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
   getRecipes() {
     //using slice rather than direct reference because we passing a new copy instead of original array
     return this.recipes.slice();
@@ -70,7 +75,7 @@ export class RecipeService {
     this.recipeChanged.next(this.recipes.slice());
   }
 
-  updateRecipe(index: number,newrecipe: Recipe) {
+  updateRecipe(index: number, newrecipe: Recipe) {
     this.recipes[index] = newrecipe;
     this.recipeChanged.next(this.recipes.slice());
   }
