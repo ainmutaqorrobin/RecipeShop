@@ -23,6 +23,7 @@ import { RecipeService } from './services/recipe.service';
 import { DataStorageService } from './services/data-storage.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RecipeResolverService } from './services/recipe.resolver.service';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { RecipeResolverService } from './services/recipe.resolver.service';
     DropdownDirective,
     RecipeStartComponent,
     RecipeEditComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
