@@ -24,6 +24,7 @@ import { DataStorageService } from './services/data-storage.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RecipeResolverService } from './services/recipe.resolver.service';
 import { AuthComponent } from './auth/auth.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { AuthComponent } from './auth/auth.component';
     RecipeService,
     DataStorageService,
     RecipeResolverService,
+    AuthService,
   ],
   bootstrap: [AppComponent],
 })
