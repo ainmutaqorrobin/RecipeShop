@@ -22,6 +22,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { RecipeService } from './services/recipe.service';
 import { DataStorageService } from './services/data-storage.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RecipeResolverService } from './services/recipe.resolver.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,12 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [ShoppingListService, RecipeService, DataStorageService],
+  providers: [
+    ShoppingListService,
+    RecipeService,
+    DataStorageService,
+    RecipeResolverService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
