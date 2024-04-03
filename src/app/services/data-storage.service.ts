@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RecipeService } from './recipe.service';
 import { Recipe } from '../recipes/recipe.model';
+import { map } from 'rxjs';
 
 @Injectable()
 export class DataStorageService {
@@ -18,8 +19,20 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    return this.http.get<Recipe[]>(this.recipeurl).subscribe((resp) => {
-      this.recipeService.overrideRecipes(resp);
-    });
+    return this.http
+      .get<Recipe[]>(this.recipeurl)
+      .pipe(
+        map((recipes) => {
+          return recipes.map((recipes) => {
+            return {
+              ...recipes,
+              ingredients: recipes.ingredients ? recipes.ingredients : [],
+            };
+          });
+        })
+      )
+      .subscribe((resp) => {
+        this.recipeService.overrideRecipes(resp);
+      });
   }
 }
