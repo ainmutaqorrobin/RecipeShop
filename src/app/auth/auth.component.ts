@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
@@ -7,7 +8,12 @@ import { Component } from '@angular/core';
 export class AuthComponent {
   isLoginMode: boolean = true;
 
-  onSwitchMode(){
-    this.isLoginMode=!this.isLoginMode
+  onSwitchMode() {
+    this.isLoginMode = !this.isLoginMode;
+  }
+
+  onSubmit(authForm: NgForm) {
+    console.log(authForm.value);
+    authForm.reset();
   }
 }
