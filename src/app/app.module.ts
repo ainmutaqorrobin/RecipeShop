@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RecipeResolverService } from './services/recipe.resolver.service';
 import { AuthComponent } from './auth/auth.component';
 import { AuthService } from './services/auth.service';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { AuthService } from './services/auth.service';
     RecipeStartComponent,
     RecipeEditComponent,
     AuthComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
