@@ -26,6 +26,16 @@ export class AuthComponent {
 
     this.isLoading = !this.isLoading;
     if (this.isLoginMode) {
+      this.authService.login(email, password).subscribe(
+        (response) => {
+          console.log(response);
+          this.isLoading = !this.isLoading;
+        },
+        (error) => {
+          console.log(error);
+          this.isLoading = !this.isLoading;
+        }
+      );
     } else {
       this.authService.signup(email, password).subscribe(
         (response) => {
@@ -33,7 +43,7 @@ export class AuthComponent {
           this.isLoading = !this.isLoading;
         },
         (error) => {
-          this.errorMessage = 'An error occured: ' + error.error.error.message;
+          this.errorMessage = error.error.error.message;
           this.isLoading = !this.isLoading;
         }
       );
