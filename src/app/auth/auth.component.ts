@@ -39,10 +39,11 @@ export class AuthComponent {
       (response) => {
         console.log(response);
         this.isLoading = !this.isLoading;
+        this.errorMessage = null;
       },
       (error) => {
         console.log(error);
-        this.errorMessage = error.error.error.message;
+        this.errorMessage = error;
         this.isLoading = !this.isLoading;
       }
     );
