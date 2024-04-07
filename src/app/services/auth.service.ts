@@ -1,14 +1,12 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpResponse,
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthResponseData } from '../auth/auth.model';
-import { catchError, throwError } from 'rxjs';
+import { catchError, Subject, tap, throwError } from 'rxjs';
+import { User } from '../auth/user.model';
 
 @Injectable()
 export class AuthService {
+  user = new Subject<User>();
   constructor(private http: HttpClient) {}
 
   signup(email: string, password: string) {
@@ -17,7 +15,17 @@ export class AuthService {
         'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDvp1vw0srS2tA6YT6YFxLL2GyqpDrdpDo',
         { email: email, password: password, returnSecureToken: true }
       )
-      .pipe(catchError(this.handleError));
+      .pipe(
+        catchError(this.handleError),
+        tap((responseData) => {
+          this.handleUser(
+            responseData.email,
+            responseData.localId,
+            responseData.idToken,
+            +responseData.expiresIn
+          );
+        })
+      );
   }
 
   login(email: string, password: string) {
@@ -26,7 +34,30 @@ export class AuthService {
         'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDvp1vw0srS2tA6YT6YFxLL2GyqpDrdpDo',
         { email: email, password: password, returnSecureToken: true }
       )
-      .pipe(catchError(this.handleError));
+      .pipe(
+        catchError(this.handleError),
+        tap((responseData) => {
+          this.handleUser(
+            responseData.email,
+            responseData.localId,
+            responseData.idToken,
+            +responseData.expiresIn
+          );
+        })
+      );
+  }
+
+  //method for handling user authentication to receive the token from backend
+  private handleUser(
+    email: string,
+    localId: string,
+    idToken: string,
+    expiresIn: number
+  ) {
+    //create new expired date using javascript Date constructor and change expiresIn property to milisecond
+    const expiredDate = new Date(new Date().getTime() + expiresIn * 1000);
+    const user = new User(email, localId, idToken, expiredDate);
+    this.user.next(user);
   }
 
   private handleError(errorResponse: HttpErrorResponse) {
