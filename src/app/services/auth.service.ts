@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthService {
   user = new BehaviorSubject<User>(null);
+  private tokenExpiredTiming: any = null;
   constructor(private http: HttpClient, private router: Router) {}
 
   signup(email: string, password: string) {
@@ -64,12 +65,31 @@ export class AuthService {
 
     if (loadUser.token) {
       this.user.next(loadUser);
+
+      //take the token expired date after user first login and substract with current time
+      const expiredDuration =
+        new Date(userData._tokenExpirationDate).getTime() -
+        new Date().getTime();
+      this.autoLogout(expiredDuration);
     }
   }
 
   logout() {
     this.user.next(null);
     this.router.navigate(['/signup']);
+    localStorage.removeItem('userData');
+    if (this.tokenExpiredTiming) {
+      clearTimeout(this.tokenExpiredTiming);
+    }
+    this.tokenExpiredTiming = null;
+  }
+
+  autoLogout(expiredDuration: number) {
+    console.log(expiredDuration);
+    
+    this.tokenExpiredTiming = setTimeout(() => {
+      this.logout();
+    }, expiredDuration);
   }
 
   //method for handling user authentication to receive the token from backend
@@ -83,6 +103,7 @@ export class AuthService {
     const expiredDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, localId, idToken, expiredDate);
     this.user.next(user);
+    this.autoLogout(expiresIn * 1000);
     localStorage.setItem('userData', JSON.stringify(user));
   }
 
