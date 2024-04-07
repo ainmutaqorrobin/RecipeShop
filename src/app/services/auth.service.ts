@@ -1,12 +1,12 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthResponseData } from '../auth/auth.model';
-import { catchError, Subject, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Subject, tap, throwError } from 'rxjs';
 import { User } from '../auth/user.model';
 
 @Injectable()
 export class AuthService {
-  user = new Subject<User>();
+  user = new BehaviorSubject<User>(null);
   constructor(private http: HttpClient) {}
 
   signup(email: string, password: string) {
