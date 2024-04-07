@@ -21,6 +21,7 @@ export class AuthComponent {
   }
 
   onSubmit(authForm: NgForm) {
+    this.errorMessage = null;
     if (authForm.invalid) {
       return;
     }
@@ -41,7 +42,7 @@ export class AuthComponent {
         console.log(response);
         this.isLoading = !this.isLoading;
         this.errorMessage = null;
-        this.router.navigate(['/recipes'])
+        this.router.navigate(['/recipes']);
       },
       (error) => {
         console.log(error);

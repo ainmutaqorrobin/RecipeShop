@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuthResponseData } from '../auth/auth.model';
+import { AuthResponseData, UserInfo } from '../auth/auth.model';
 import { BehaviorSubject, catchError, Subject, tap, throwError } from 'rxjs';
 import { User } from '../auth/user.model';
 import { Router } from '@angular/router';
@@ -48,6 +48,25 @@ export class AuthService {
       );
   }
 
+  autoLogin() {
+    const userData: UserInfo = JSON.parse(localStorage.getItem('userData'));
+
+    if (!userData) {
+      return;
+    }
+
+    const loadUser = new User(
+      userData.email,
+      userData.id,
+      userData._token,
+      new Date(userData._tokenExpirationDate)
+    );
+
+    if (loadUser.token) {
+      this.user.next(loadUser);
+    }
+  }
+
   logout() {
     this.user.next(null);
     this.router.navigate(['/signup']);
@@ -64,6 +83,7 @@ export class AuthService {
     const expiredDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, localId, idToken, expiredDate);
     this.user.next(user);
+    localStorage.setItem('userData', JSON.stringify(user));
   }
 
   private handleError(errorResponse: HttpErrorResponse) {
@@ -71,7 +91,7 @@ export class AuthService {
 
     let errorMessage = 'Unknown error occured!';
     if (!errorResponse || !errorResponse.error || !errorResponse.error.error) {
-      return throwError(errorMessage);
+      return throwError(() => errorMessage);
     }
     switch (errorResponse.error.error.message) {
       case 'EMAIL_EXISTS':
@@ -99,6 +119,6 @@ export class AuthService {
           'We have blocked all requests from this device due to unusual activity. Try again later.';
         break;
     }
-    return throwError(errorMessage);
+    return throwError(() => errorMessage);
   }
 }
