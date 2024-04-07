@@ -24,16 +24,8 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    return this.authService.user.pipe(
+    return this.http.get<Recipe[]>(this.recipeurl).pipe(
       //operator 1
-      take(1),
-      //operator 2
-      exhaustMap((user) => {
-        return this.http.get<Recipe[]>(this.recipeurl, {
-          params: new HttpParams().set('auth', user.token),
-        });
-      }),
-      //operator 3
       map((recipes) => {
         return recipes.map((recipes) => {
           return {
@@ -42,7 +34,7 @@ export class DataStorageService {
           };
         });
       }),
-      //operator 4
+      //operator 2
       tap((recipes) => {
         this.recipeService.overrideRecipes(recipes);
       })
