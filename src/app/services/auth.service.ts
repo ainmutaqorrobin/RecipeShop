@@ -139,6 +139,10 @@ export class AuthService {
         errorMessage =
           'We have blocked all requests from this device due to unusual activity. Try again later.';
         break;
+      case 'USER_DISABLED':
+        errorMessage =
+          'This account has been disabled.';
+        break;
     }
     return throwError(() => errorMessage);
   }
