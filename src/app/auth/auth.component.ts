@@ -21,7 +21,6 @@ export class AuthComponent {
   }
 
   onSubmit(authForm: NgForm) {
-    this.errorMessage = null;
     if (authForm.invalid) {
       return;
     }
@@ -52,5 +51,9 @@ export class AuthComponent {
     );
 
     authForm.reset();
+  }
+
+  onCloseError() {
+    this.errorMessage = null;
   }
 }
