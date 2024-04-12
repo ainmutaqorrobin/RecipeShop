@@ -86,7 +86,7 @@ export class AuthService {
 
   autoLogout(expiredDuration: number) {
     console.log(expiredDuration);
-    
+
     this.tokenExpiredTiming = setTimeout(() => {
       this.logout();
     }, expiredDuration);
@@ -135,13 +135,12 @@ export class AuthService {
       case 'INVALID_EMAIL':
         errorMessage = 'The email address is badly formatted.';
         break;
-      case 'TOO_MANY_ATTEMPTS_TRY_LATER':
+      case 'TOO_MANY_ATTEMPTS_TRY_LATER : Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.':
         errorMessage =
           'We have blocked all requests from this device due to unusual activity. Try again later.';
         break;
       case 'USER_DISABLED':
-        errorMessage =
-          'This account has been disabled.';
+        errorMessage = 'This account has been disabled.';
         break;
     }
     return throwError(() => errorMessage);
