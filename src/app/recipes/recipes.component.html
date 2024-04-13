@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-md-5">
-        <app-recipe-list></app-recipe-list>
+        <app-recipe-list *ngIf="!isLoading" [isLoading]="isLoading"></app-recipe-list>
+        <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
     </div>
     <div class="col-md-7">
         <router-outlet></router-outlet>
