@@ -7,8 +7,6 @@ import { ServersComponent } from './servers/servers.component';
 import { WarningAlertComponent } from './warning-alert/warning-alert.component';
 import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { HeaderComponent } from './header/header.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { ShoppingListService } from './services/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +22,7 @@ import { AlertComponent } from './shared/alert/alert.component';
 import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 import { RecipesModule } from './recipes/recipes.modules';
 import { RecipesRoutingModule } from './recipes/recipes-routing.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
 @NgModule({
   declarations: [
@@ -33,8 +32,6 @@ import { RecipesRoutingModule } from './recipes/recipes-routing.module';
     WarningAlertComponent,
     SuccessAlertComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     DropdownDirective,
     AuthComponent,
     LoadingSpinnerComponent,
@@ -49,6 +46,7 @@ import { RecipesRoutingModule } from './recipes/recipes-routing.module';
     HttpClientModule,
     RecipesModule,
     RecipesRoutingModule,
+    ShoppingListModule,
   ],
   providers: [
     ShoppingListService,
