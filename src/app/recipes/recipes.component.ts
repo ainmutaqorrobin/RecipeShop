@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Recipe } from './recipe.model';
 
 @Component({
@@ -7,8 +7,7 @@ import { Recipe } from './recipe.model';
   styleUrl: './recipes.component.css',
 })
 export class RecipesComponent implements OnInit {
-  selectedRecipeList: Recipe;
-
+  @Input() isLoading: boolean = false;
   constructor() {}
 
   ngOnInit(): void {}
