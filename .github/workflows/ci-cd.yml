@@ -5,6 +5,7 @@ on:
     branches:
       - personalLaptop # Set this to your default branch
 
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
