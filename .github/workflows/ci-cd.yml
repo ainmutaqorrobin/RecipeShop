@@ -18,4 +18,4 @@ jobs:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Deploy to VPS
-      run: ssh -vvv ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ~/RecipeShop && git pull"
+      run: ssh -vvv ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p 6262 "cd ~/RecipeShop && git pull"
