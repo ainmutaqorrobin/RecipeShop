@@ -16,4 +16,4 @@ jobs:
         run: sudo apt-get install -y sshpass
 
       - name: Deploy to VPS
-        run: sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no -p 6262 ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ~/RecipeShop && git pull"
+        run: sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no -p 6262 ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd /home/server/RecipeShop && git pull"
