@@ -3,19 +3,23 @@ name: CI/CD Deployment
 on:
   push:
     branches:
-      - personalLaptop  # Adjust this as necessary for your workflow
+      - personalLaptop # Adjust this as necessary for your workflow
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Setup SSH Agent
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Setup SSH Agent
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-    - name: Deploy to VPS
-      run: ssh -p 6262 ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ~/RecipeShop && git pull"
+      - name: Add SSH key to known_hosts
+        run: |
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy to VPS
+        run: ssh -p 6262 ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd /RecipeShop && git pull"
