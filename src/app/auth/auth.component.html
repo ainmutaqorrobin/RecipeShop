@@ -18,6 +18,16 @@
             <div>
                 <button type="submit" class="btn btn-primary" [disabled]="authForm.invalid">{{isLoginMode? 'Login':'Sign Up'}}</button> |
                 <button type="button" class="btn btn-primary" (click)="onSwitchMode()">Switch to {{isLoginMode?'Sign Up':'Login'}}</button>
+            </div><br>
+            <div class="text-danger" *ngIf="authForm.controls['email'].invalid && authForm.controls['email'].touched">
+                <ul class="list-group">
+                    <li class="list-group item">Please make sure email is a valid email</li>
+                </ul>
+            </div>
+             <div class="text-danger" *ngIf="authForm.controls['password'].invalid && authForm.controls['password'].touched">
+                <ul class="list-group">
+                    <li class="list-group item">Please make sure password has 6 characters and more</li>
+                </ul>
             </div>
         </form>
     </div>
