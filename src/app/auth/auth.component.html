@@ -21,12 +21,12 @@
             </div><br>
             <div class="text-danger" *ngIf="authForm.controls['email'].invalid && authForm.controls['email'].touched">
                 <ul class="list-group">
-                    <li class="list-group item">Please make sure email is a valid email</li>
+                    <li class="list-group item">Email need in valid email</li>
                 </ul>
             </div>
              <div class="text-danger" *ngIf="authForm.controls['password'].invalid && authForm.controls['password'].touched">
                 <ul class="list-group">
-                    <li class="list-group item">Please make sure password has 6 characters and more</li>
+                    <li class="list-group item">Password must have 6 characters and more</li>
                 </ul>
             </div>
         </form>
