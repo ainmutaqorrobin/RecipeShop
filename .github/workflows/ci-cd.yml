@@ -12,14 +12,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup SSH Agent
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Add SSH key to known_hosts
-        run: |
-          echo "${{ secrets.SSH_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
 
       - name: Deploy to VPS
-        run: ssh -p 6262 ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd /RecipeShop && git pull"
+        run: sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no -p 6262 ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd /RecipeShop && git pull"
