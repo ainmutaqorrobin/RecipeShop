@@ -1,1 +1,2 @@
-<h3>Please select a Recipe!</h3>
+<h3 *ngIf="recipes.length===0">Please fetch Recipe from Manage tab</h3>
+<h3 *ngIf="recipes.length>0">Please select a recipe!</h3>
