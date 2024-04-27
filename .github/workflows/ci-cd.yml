@@ -1,0 +1,31 @@
+name: CI/CD Deployment
+
+on:
+  push:
+    branches:
+      - personalLaptop # Adjust this as necessary for your workflow
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18.13" # Specify the Node.js version here
+
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
+      - name: Deploy and Build on VPS
+        run: |
+          sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no -p 6262 ${{ secrets.USERNAME }}@${{ secrets.HOST }} "
+          source ~/.nvm/nvm.sh &&
+          nvm use 18.13 &&
+          cd /home/server/RecipeShop &&
+          git pull &&
+          npm install &&
+          npm run build -- --configuration production"
