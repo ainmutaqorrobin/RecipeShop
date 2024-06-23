@@ -1,0 +1,148 @@
+{
+  "recipes": [
+    {
+      "description": "Ikan bilis lauk sambal petai",
+      "imagePath": "https://resepichenom.com/media/917B9F3E-4E5C-4CB2-9474-344D1573A6C2.jpeg",
+      "ingredients": [
+        {
+          "amount": 2,
+          "name": "20 gram Bawang Merah"
+        },
+        {
+          "amount": 1,
+          "name": "15 gram Bawang Putih"
+        },
+        {
+          "amount": 1,
+          "name": "5 gram belacan"
+        },
+        {
+          "amount": 1,
+          "name": "300 gram ikan bilis"
+        },
+        {
+          "amount": 1,
+          "name": "150 gram petai"
+        },
+        {
+          "amount": 1,
+          "name": "40 gram pes cili"
+        }
+      ],
+      "name": "Ikan Bilis Petai"
+    },
+    {
+      "description": "Udang masak kunyit ramuan turun temurun",
+      "imagePath": "https://friedchillies.com/fc/wp-content/uploads/2021/05/udang-kunyit_N6C17831.jpg",
+      "ingredients": [
+        {
+          "amount": 1,
+          "name": "6 gram bawang putih"
+        },
+        {
+          "amount": 1,
+          "name": "10 gram cili padi"
+        },
+        {
+          "amount": 1,
+          "name": "5 gram cili merah"
+        },
+        {
+          "amount": 1,
+          "name": "150 gram bawang besar"
+        },
+        {
+          "amount": 1,
+          "name": "100 gram kacang panjang"
+        },
+        {
+          "amount": 1,
+          "name": "100 gram carrot"
+        },
+        {
+          "amount": 1,
+          "name": "10 gram sos tiram"
+        },
+        {
+          "amount": 1,
+          "name": "3 gram serbuk kunyit"
+        }
+      ],
+      "name": "Udang Masak Kunyit"
+    },
+    {
+      "description": "Daging ni warna merah",
+      "imagePath": "https://mediavariasi.com/wp-content/uploads/2024/01/IMG_0431.jpeg",
+      "ingredients": [
+        {
+          "amount": 1,
+          "name": "300 gram daging"
+        },
+        {
+          "amount": 1,
+          "name": "70 ml air rebusan daging"
+        },
+        {
+          "amount": 1,
+          "name": "10 ml pewarna merah"
+        },
+        {
+          "amount": 1,
+          "name": "3 gram bawang putih"
+        },
+        {
+          "amount": 1,
+          "name": "150 gram bawang besar"
+        },
+        {
+          "amount": 1,
+          "name": "10 gram cili api"
+        },
+        {
+          "amount": 1,
+          "name": "15 gram cili merah"
+        },
+        {
+          "amount": 1,
+          "name": "20 gram sos tiram"
+        },
+        {
+          "amount": 1,
+          "name": "70 gram kacang panjang"
+        },
+        {
+          "amount": 1,
+          "name": "70 gram lobak merah"
+        }
+      ],
+      "name": "Daging Masak Merah"
+    },
+    {
+      "description": "Daging ni hitam, sila hati-hati",
+      "imagePath": "https://resepichenom.com/media/DSC_5432-2.jpg",
+      "ingredients": [
+        {
+          "amount": 1,
+          "name": "6 gram bawang putih"
+        },
+        {
+          "amount": 1,
+          "name": "40 gram cili besar"
+        },
+        {
+          "amount": 1,
+          "name": "40 gram bawang besar"
+        },
+        {
+          "amount": 1,
+          "name": "150 ml kicap"
+        },
+        {
+          "amount": 1.5,
+          "name": "lada sulah"
+        }
+      ],
+      "name": "Daging Masak Kicap"
+    }
+  ]
+}
